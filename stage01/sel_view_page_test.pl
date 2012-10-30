@@ -14,7 +14,7 @@ print "\n";
 print "Reading Input File\n";
 
 read_input_file();
-my $clc_ip = $ENV{'QA_CLC_IP'};
+my $ui_ip = $ENV{'QA_UI_IP'};
 my $userconsole_port = "8888";
 print "\n";
 
@@ -61,7 +61,7 @@ foreach my $line (@userlistarray){
 		print "\n";
 
 		my $sel_cmd = "cd /root/eucalyptus_ui_test; export DISPLAY=:0;";
-		$sel_cmd .= " ./runtest_view_page.py -i $clc_ip -p $userconsole_port -a $account -u $user -w $password -t $this_test";
+		$sel_cmd .= " ./runtest_view_page.py -i $ui_ip -p $userconsole_port -a $account -u $user -w $password -t $this_test";
 
 		my $cmd = $SSH_PREFIX . " \"" . $sel_cmd . "\"";
 
@@ -93,14 +93,14 @@ exit(0);
 ########################### SUBROUTINE ###################################
 
 # Read input values from input.txt
-sub read_input_file{
+sub read_input_file_for_ui{
 
 	my $is_memo = 0;
 	my $memo = "";
 
 	open( INPUT, "< ../input/2b_tested.lst" ) || die $!;
 
-	$ENV{'QA_CLC_IP'} = "";
+	$ENV{'QA_UI_IP'} = "";
 	my $line;
 	while( $line = <INPUT> ){
 		chomp($line);
@@ -119,10 +119,10 @@ sub read_input_file{
 			my $qa_roll = $6;
 
 			my $this_roll = lc($6);
-			if( $this_roll =~ /clc/ && $ENV{'QA_CLC_IP'} eq "" ){
+			if( $this_roll =~ /ui/ && $ENV{'QA_UI_IP'} eq "" ){
 				print "\n";
 				print "IP $qa_ip [Distro $qa_distro, Version $qa_distro_ver, ARCH $qa_arch] is built from $qa_source as Eucalyptus-$qa_roll\n\n";
-				$ENV{'QA_CLC_IP'} = $qa_ip;
+				$ENV{'QA_UI_IP'} = $qa_ip;
 				$ENV{'QA_DISTRO'} = $qa_distro;
 				$ENV{'QA_DISTRO_VER'} = $qa_distro_ver;
 				$ENV{'QA_ARCH'} = $qa_arch;
