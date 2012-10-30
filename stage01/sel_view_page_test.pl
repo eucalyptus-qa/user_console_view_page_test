@@ -13,7 +13,7 @@ if( @ARGV > 0 ){
 print "\n";
 print "Reading Input File\n";
 
-read_input_file();
+read_input_file_for_ui();
 my $ui_ip = $ENV{'QA_UI_IP'};
 my $userconsole_port = "8888";
 print "\n";
