@@ -1,7 +1,21 @@
+user_console_view_page_test
+===========================
+
+## Desciption
+
+Clicks through all the main landing pages on User Console to ensure that the pages are loadable
+
+## Procedure
+
+1. SSH into the In-house Selenium Remote Server Machine
+
+2. Run the testcase "view_all_page" for the se34euca command "runtest_view_page.py" for all users in the file "../share/ui-test-dir/ui-test-user-info.txt"
+
+
+
 # Eucalyptus Testunit Framework
 
 Eucalyptus Testunit Framework is designed to run a list of test scripts written by Eucalyptus developers.
-
 
 
 ## How to Set Up Testunit Environment
